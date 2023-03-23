@@ -40,7 +40,7 @@ function filtrar(){
     buttonsFiltro.forEach( filtro =>{
 
 
-        arrayFiltrado = arrayProductosTienda.filter(producto => ((`vtuber${producto.idVtuber}`) === filtro.id) || ((`categoria${producto.idCategoria}`) === filtro.id) || (((`categoria${producto.idCategoria}`) === filtro.id) && ((`vtuber${producto.idVtuber}`) === filtro.id)))
+        arrayFiltrado = arrayProductosTienda.filter(producto => ((`vtuber${producto.idVtuber}`) === filtro.id) || ((`categoria${producto.idCategoria}`) === filtro.id))
 
         // guardo el dato del filtro X 
 

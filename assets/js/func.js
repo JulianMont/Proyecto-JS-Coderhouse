@@ -107,7 +107,7 @@ function generarProductoEnCarrito(){
 function actualizarCarrito(){
 
     // actualizo arrayCarritoLS
-    arrayCarritoLS = JSON.parse(localStorage.getItem("productos-en-carrito"))
+    arrayCarritoLS = JSON.parse(localStorage.getItem("productos-en-carrito")) || []
 
     if(arrayCarritoLS.length !== 0){
 
