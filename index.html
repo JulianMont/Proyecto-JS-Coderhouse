@@ -5,128 +5,158 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="#" type="image/x-icon">
-    <link rel="stylesheet" href="./assets/style/css/style.css">
-    <script defer src="./assets/js/producto.js"></script>
-    <script defer src="./assets/js/itemCarrito.js"></script>
-    <script defer src="./assets/js/carrito.js"></script>
-    <script defer src="./assets/js/test.js"></script>
+    <!--bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!--bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="./assets/styles/style.css">
+    <!--bootstrap js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <!-- clases -->
+    <script defer src="./assets/js/class.js"></script>
+    <!-- base de datos -->
+    <script defer src="./assets/js/datos.js"></script>
+    <!-- funciones -->
+    <script defer src="./assets/js/func.js"></script>
+    <!-- main js -->
+    <script defer src="./assets/js/main.js"></script>
+
     <title>OwOMarket</title>
 </head>
 <body>
-    <!-- <header>
-        <div class="header__logo">
-            <div class="header__logo-img">
-                <img src="http://store-images.s-microsoft.com/image/apps.10453.13947558052872728.98832aaa-35d7-44ae-9389-f805cd14a0c1.cc44fb28-327b-4527-8f0b-615a392a0b8e" alt="imagen owo">
-                <h1><span>owo</span>market</h1>
+    <header class="sticky-top"> 
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <!-- icon + nombre -->
+                <a class="navbar-brand" href="./index.html">
+                    <img class="w-25" src="./assets/img/logo_uwu.png" alt="logo OwO"
+                     title="OwOMarket">
+                    Market
+                </a>
+                <!-- boton barras mobile -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- menu -->
+                <div class="collapse navbar-collapse " id="menu">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-uppercase" aria-current="page" href="./index.html#hero">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-uppercase" href="./index.html#Productos">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-uppercase" href="#">Contactanos</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto me-5">
+                        <li class="nav-item">
+                            <a class="nav-link text-uppercase" href="#">Acceder</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-uppercase" href="#">Registrarse</a>
+                        </li>
+                        <!-- carrito de compra -->
+                        <button class="btn btn-success" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><i class="bi bi-cart4"></i></button>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <nav class="header__nav">
-            <ul class="header__list">
-                <li class="header__list-item"><a href="#">Inicio</a></li>
-                <li class="header__list-item"><a href="#">Productos</a></li>
-                <li class="header__list-item"><a href="#">Contactanos</a></li>
-                <li class="header__list-item"><a href="#">Acceder</a></li>
-                <li class="header__list-item"><a href="#">Registrarse</a></li>
-            </ul>
         </nav>
-        <div class="header__carrito">
-            <img class="header__carrito-img" src="#" alt="imagen de carrito"> -->
-            <!-- el valor del numero sera modificado segun la cant de productos en el carrito -->
-            <!-- <span class="header__carrito-numero">Numero</span>
-        </div>
     </header>
-    <main> -->
-        <!-- <section class="slider">
-            <div class="slider__cards">
-                <div class="slider__cards-card"></div>
-                <div class="slider__cards-card"></div>
-                <div class="slider__cards-card"></div>
-                <div class="slider__cards-card"></div>
-                <div class="slider__cards-card"></div>
+    <main>
+        <!-- menu de carrito -->
+        <div class="offcanvas offcanvas-end w-75" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Productos en carrito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="slider__next"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-              </svg>
+            <div class="offcanvas-body d-flex flex-column gap-5">
+                <p id="carritoVacio">Su carrito esta vacio</p>
+                <div id="carritoProductos" class="d-flex flex-column gap-3">
+                    <!-- productos cargados -->
+
+                </div>
+                <div class="d-flex justify-content-between ">
+                    <div>
+                        <button id="vaciarCarrito" class="btn btn-primary">Vaciar Carrito</button>
+                    </div>
+                    <div class="d-flex">
+                        <div class="d-flex">
+                            <p>Total:</p>
+                            <p id="totalCarrito"></p>
+                        </div>
+                        <button class="btn btn-success">Comprar</button>
+                    </div>
+                </div>
             </div>
-            <div class="slider__prev"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
-              </svg>
-            </div>
-            <div class="slider__barras">
-                <div class="slider__barras-barra"></div>
-                <div class="slider__barras-barra"></div>
-                <div class="slider__barras-barra"></div>
-                <div class="slider__barras-barra"></div>
-                <div class="slider__barras-barra"></div>
-            </div>
+        </div>
+        <!-- presentacion pack producto (slider) + h1 -->
+        <section id="hero">
+            <h1 class="text-center">OwOMarket</h1>
         </section>
 
-        <section class="destacados">
+        <section>
+            <h2 id="Productos">Nuestros Productos</h2>
 
-            <h2 class="destacados__h2">Productos destacados</h2>
+           <!-- container filtro -->
+            <div class="container">
+                <h3>Filtro</h3>
 
-            <div class="destacados__cards">
-                <div class="destacados__cards-card"></div>
-                <div class="destacados__cards-card"></div>
-                <div class="destacados__cards-card"></div>
-                <div class="destacados__cards-card"></div>
-                <div class="destacados__cards-card"></div>
-            </div>
-        </section>
-
-        <section class="productos">
-
-            <h2 class="productos__h2">Nuestros productos</h2>
-
-            <div class="productos__filtro">
-                <div class="filtroAfiliacion">
-                    <button class="">Vtubers Independientes</button>
-                    <button class="">Vtubers Hololive</button>
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item border-0">
+                      <h2 class="accordion-header w-25" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                          Vtuber
+                        </button>
+                      </h2>
+                      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body border-bottom">
+                            <div id="containerVtuber" class="btn-group row" role="group" aria-label="Basic checkbox toggle button group">
+                                <!-- cargar vtubers -->
+                                <div class="d-block">
+                                    <input type="checkbox" class="btn-check" id="vtuberAll" autocomplete="off" checked>
+                                    <label class="btn btn-outline-primary mb-4" for="vtuberAll">
+                                        ALL
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item border-0">
+                      <h2 class="accordion-header w-25" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                          Categoria
+                        </button>
+                      </h2>
+                      <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body border-bottom">
+                            <div id="containerCategoria" class="btn-group row" role="group" aria-label="Basic checkbox toggle button group">
+                                <!-- cargar categorias -->
+                                <div class="d-block">
+                                    <input type="checkbox" class="btn-check" id="categoriaAll" autocomplete="off" checked>
+                                    <label class="btn btn-outline-primary mb-4" for="categoriaAll">
+                                        ALL
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
                 </div>
-                <div class="filtroAfiliacion__vtuber">
-                    <button>Shylily</button>
-                    <button>Numi</button>
-                    <button>Onigiri</button>
-                </div>
-                <div class="filtroAfiliacion__vtuber">
-                    <button>Marine</button>
-                    <button>Ina</button>
-                    <button>Kronii</button>
+            </div>
+            <!-- container cards -->
+
+            <div class="container">
+                
+                <div class="row" id="containerCards">
+
                 </div>
             </div>
-            <div class="productos__cards" id="productosCards">
-                <div class="productos__cards-card"></div>
-                <div class="productos__cards-card"></div>
-                <div class="productos__cards-card"></div>
-                <div class="productos__cards-card"></div>
-            </div>
+
         </section>
     </main>
-    <footer>
-
-    </footer> -->
-    <div class="productos__cards-card">
-        <div class="card">
-            <div class="card__img">
-                <img src="#" alt="Foto del producto">
-            </div>
-            <div class="card__detalles">
-                <h3 class="card__nombre">Remera</h3>
-                <span class="card__precio">$132</span>
-            </div>
-            <div class="card__buttonCarrito">
-                <button>
-                    <span>Agregar al carrito</span>
-                    <div class="card__buttonCarrito-img">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
-                            <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
-                            <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                          </svg>
-                    </div>
-                </button>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+<body>
+<html>

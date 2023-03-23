@@ -1,300 +1,187 @@
-//-------------------------------- PROCEDIMIENTO Tienda (FUNCIONA , Mejora: Especificar cantidad para no llenar objetos repetidos el array)------------------------------------------------
+function cargarProductoEnTienda(productosFiltrados){
 
-function mostrarTienda(){
-   
-    arrayProductosTienda.forEach( producto =>{
+    containerCards.innerHTML = ""
 
-        alert("Producto: "+ producto.nombre + "\nPrecio: "+ producto.precioPlusIVA())
+    productosFiltrados.forEach( producto => {
 
-        let opcion = prompt("¿Desea agregarlo a su carrito?\n\n1-> Si\n2-> No")
+        let card = document.createElement("div")
+        card.classList.add("card","col-sm-6","col-md-4","col-lg-3")
+    
+        card.innerHTML= 
+        
+            `<img src="${producto.img}" class="card-img-top" alt="${producto.nombre}">
+            <div class="card-body">
+                <h5 class="card-title">${producto.nombre}</h5>
+                <p class="card-text">$${producto.precio} usd</p>
+                <button id="producto${producto.idProducto}" type="button" class="btn btn-primary buttonAgregar" onClick="agregarAlCarrito(${producto.idProducto})">Agregar al carrito</button>
+            </div>`
+        ;
+        
+        containerCards.appendChild(card)
 
-        while(parseInt(opcion) !== 2){
-
-            if(parseInt(opcion) === 1){
-
-                producto.agregarAlCarrito(producto)
-                alert("Producto Agregado")
-
-                opcion = prompt("¿Quiere agregar otro?\n\n1-> Si\n2-> No")
-            }
-        }
     })
 }
 
-//-------------------------------- PROCEDIMIENTO INICIAR SESION (FUNCIONA)-----------------------------------------
+function agregarAlCarrito(idProducto){
 
-function iniciarSesion() {
-    
-    let usuarioEncontrado
-    let usuario
-    let pass
-    let intentosContra = 3
-    let usuarioPosicion
-    
-    // usuario registrado
-    alert("Usuario: Julian\nContraseña: Hola123")
-    alert("Usuario: Vani\nContraseña: Hola123")
-    
-    usuario = prompt("Ingrese su usuario")
-    
-    usuarioEncontrado = usuariosRegistrado.some( usuarioFiltrado =>  usuarioFiltrado.nombreUsuario === usuario)
+    itemCarrito = new ItemProducto()
 
-    while( usuarioEncontrado !== true){
+    let productoAgregado = arrayProductosTienda.find(( producto => producto.idProducto === idProducto ))
     
-        alert("El nombre de usuario no se encuentra registado")
+    itemCarrito.agregarProducto(productoAgregado)
     
-        usuario = prompt("Ingrese su usuario")
+    localStorage.setItem("productos-en-carrito", JSON.stringify(arrayCarrito))
     
-        usuarioEncontrado = usuariosRegistrado.some( usuarioFiltrado =>  usuarioFiltrado.nombreUsuario === usuario)
-    }
+    generarProductoEnCarrito()
+}
 
-    usuarioPosicion = usuariosRegistrado.findIndex( usuarioPos => usuarioPos.nombreUsuario === usuario)
+function eliminarDelCarrito(idItemProducto){
     
-    pass = prompt("Ingrese su contraseña")
+
+    itemCarrito = new ItemProducto()
+
+    let productoEliminado = arrayCarrito.find( itemProducto =>{
+
+        if(itemProducto.idItemProducto === idItemProducto){
+
+
+            return itemProducto.producto
+        } 
+    })
+
+
+    itemCarrito.eliminarProducto(productoEliminado)
+
+    localStorage.setItem("productos-en-carrito", JSON.stringify(arrayCarrito))
     
-    if(usuariosRegistrado[usuarioPosicion].pass === pass){
+    generarProductoEnCarrito()
+
+}
+
+function generarProductoEnCarrito(){
+
+    actualizarCarrito()
+    
+    carritoProductos.innerHTML = ""
+    
+    // dibujo el producto
+
+    arrayCarrito.forEach(itemProducto =>{
+
         
-        alert("Ha ingresado correctamente\n\nBienvenido "+usuariosRegistrado[usuarioPosicion].nombreUsuario)
-        usuarioConectado = true
-        menuConectadoTrue()
+        let div = document.createElement("div")
+        div.classList.add( "d-flex", "justify-content-between", "align-items-center")
     
+        div.innerHTML= 
+
+        `
+            <img class="w-25" src="${itemProducto.producto.img}" alt="${itemProducto.producto.nombre}">
+            <div class="carritoProducto-nombre">
+                <small>Titulo</small>
+                <h3>${itemProducto.producto.nombre}</h3>
+            </div>
+            <div class="carritoProducto-cantidad">
+                <small>Cantidad</small>
+                <p>${itemProducto.cantidad}</p>
+            </div>
+            <div class="carritoProducto-precio">
+                <small>Precio</small>
+                <p>$${itemProducto.producto.precio}</p>
+            </div>
+            <div class="carritoProducto-subTotal">
+                <small>Subtotal</small>
+                <p>${itemProducto.cantidad*itemProducto.producto.precio}</p>
+            </div>
+            <button id="producto${itemProducto.producto.idProducto}" class="buttonEliminar btn btn-danger" onClick="eliminarDelCarrito(${itemProducto.idItemProducto})"><i class="bi bi-cart-dash-fill"></i></button>`
+        ;
+        
+        carritoProductos.append(div)
+
+        
+    })
+
+    calcularCarrito()
+
+}
+
+function actualizarCarrito(){
+
+    // actualizo arrayCarritoLS
+    arrayCarritoLS = JSON.parse(localStorage.getItem("productos-en-carrito"))
+
+    if(arrayCarritoLS.length !== 0){
+
+        arrayCarrito = arrayCarritoLS
+        carritoVacio.classList.add("d-none")
+ 
     }else{
-        while(pass != usuariosRegistrado[usuarioPosicion].pass && intentosContra > 0){
-    
-            alert("La contraseña ingresada es incorrecta\n\nNumero de intentos restantes: "+intentosContra)
-            intentosContra--
-            pass = prompt("Ingrese su contraseña")
-        }
-        if(usuariosRegistrado[usuarioPosicion].pass === pass){
-            alert("Ha ingresado correctamente\n\nBienvenido "+usuariosRegistrado[usuarioPosicion].nombreUsuario)
-            usuarioConectado = true
-            menuConectadoTrue()
-        }else{
-            alert("Ha superado el numero de intentos para ingresar, vuelva mas tarde")
-            menuConectadoFalse()
-        }
+        carritoVacio.classList.remove("d-none")
     }
+}
+
+function calcularCarrito(){
+
+    let total = arrayCarrito.reduce((acumulador,item) => acumulador + (item.cantidad*item.producto.precio),0)
     
+    totalCarrito.innerText = `$${total}`
 }
 
-//-------------------------------- PROCEDIMIENTO CERRAR SESION (FUNCIONA)-----------------------------------------
+function cargarFiltrosEnTienda(){
 
-function cerrarSesion(){
-
-    alert("Se ha cerrado su sesion")
     
-    usuarioConectado = false
+    // filtro por tipo de producto
+    categoriaProducto.forEach( categoria => {
 
-    menuConectadoFalse()
-}
-
-
-//-------------------------------- PROCEDIMIENTO MENU PRINCIPAL (FUNCIONA)-----------------------------------------
-
-function menuConectadoFalse(){
-
-    let opcion
-
-    do {
-
-        opcion = prompt("Seleccione una de las siguientes opciones\n\n1 -> Iniciar Sesion\n2 -> Crear cuenta \n3 -> Ver Tienda \n4 -> Ver Carrito \n\n0 -> Salir\n")
+        // creacion de icon/button
+        let tipoCategoria = document.createElement("div")
+        tipoCategoria.classList.add("col-md-6","col-lg-3")
+    
+        tipoCategoria.innerHTML= 
         
-        switch(parseInt(opcion)){
-            case 1 :
-                iniciarSesion()
-                opcion = 0
-                break
-            case 2 :
-                crearCuenta()
-                break
-            case 3 :
-                mostrarTienda()
-                break
-            case 4 :
-                if(usuarioConectado == false){
-                    alert("Inicie sesion para ingresar a su carrito")
-                    iniciarSesion()
-                }else{
-                    verCarrito()
-                }
-                break
-            case 0 :
-                alert("Gracias por visitarnos , vuelva pronto 🙂")
-                break
-            default:
-                alert("La opcion ingresada no es valida, porfavor ingrese el numero de la opcion")
-                break
-        }
+            `   
+                <input type="checkbox" class="btn-check buttonCategoria" id="categoria${categoria.id}" autocomplete="off" onClick="filtrar()">
+                <label class="btn btn-outline-primary" for="categoria${categoria.id}">
+                    <img class="w-25"src="${categoria.img}" alt="${categoria.nombre}">
+                    ${categoria.nombre}
+                </label>
+            `
+        ;
         
-    } while (parseInt(opcion) !==0);
-}
-
-//-------------------------------- PROCEDIMIENTO MENU USUARIO CONECTADO (FUNCIONA)-----------------------------------------
-
-function menuConectadoTrue(){
-
-    let opcion
-
-    do {
-        opcion = prompt("Seleccione una de las siguientes opciones\n\n1 -> Ver Tienda \n2 -> Ver Carrito \n3 -> Cerrar Sesion \n\n0 -> Salir\n")
-        
-        switch(parseInt(opcion)){
-            case 1 :
-                mostrarTienda()
-                break
-            case 2 :
-                verCarrito()
-                opcion = 0
-                break
-            case 3 :
-                cerrarSesion()
-                opcion = 0
-                break
-            case 0 :
-                alert("Gracias por visitarnos , vuelva pronto 🙂")
-                break
-            default:
-                alert("La opcion ingresada no es valida, porfavor ingrese el numero de la opcion")
-                break
-        }
-        
-    } while (parseInt(opcion) !==0);
-}
-
-//-------------------------------- PROCEDIMIENTO VER CARRITO MENU (FUNCIONA)-----------------------------------------
-
-function verCarrito(){
-
-    do {
-        opcion = prompt("Seleccione una de las siguientes opciones\n\n1 -> Ver productos en carrito \n2 -> Sacar producto del carrito \n3 -> Confirmar compra \n\n0 -> Volver al menu\n")
-        
-        switch(parseInt(opcion)){
-            case 1 :
-                if(obtenerEstadoCarrito() === true){
-                    verProductosEnCarrito()
-                }else{
-                    alert("Su carrito se encuentra vacio")
-                }
-                break
-            case 2 :
-                if(obtenerEstadoCarrito() === true){
-                    eliminarProductoCarrito()
-                }else{
-                    alert("Su carrito se encuentra vacio")
-                }
-                break
-            case 3 :
-                if(obtenerEstadoCarrito() === true){
-                    compraConfirmada()
-                }else{
-                    alert("Su carrito se encuentra vacio")
-                }
-                break
-            case 0 :
-                if(usuarioConectado === false){
-                    menuConectadoFalse()
-                    opcion = 0
-                }else{
-                    menuConectadoTrue()
-                    opcion = 0
-                }
-                break
-            default:
-                alert("La opcion ingresada no es valida, porfavor ingrese el numero de la opcion")
-                break
-        }
-        
-    } while (parseInt(opcion) !==0);
-}
-
-//-------------------------------- PROCEDIMIENTO VER PRODUCTOS EN ARRAY (FUNCIONA)-----------------------------------------
-
-function verProductosEnCarrito(){
-    arrayCarrito.forEach(producto => alert(">>>>>Productos en carrito<<<<<\n\nProducto: "+ producto.nombre+"\nPrecio: $"+ producto.precioPlusIVA()))
-}
-
-//-------------------------------- PROCEDIMIENTO ELIMINAR PRODUCTOS EN ARRAY (FUNCIONA)-----------------------------------------
-
-function eliminarProductoCarrito(){
-
-    arrayCarrito.forEach( (producto,i) =>{
-
-        alert("Producto: "+ producto.nombre + "\nPrecio: "+ producto.precioPlusIVA())
-
-        let opcion = prompt("¿Desea eliminarlo de su carrito?\n\n1-> Si\n2-> No")
-
-        while(parseInt(opcion) !== 2){
-
-            if(parseInt(opcion) === 1){
-
-                producto.sacarDelCarrito(i)
-                alert("Producto Eliminado")
-
-                opcion = 2
-            }
-        }
+        containerCategoria.appendChild(tipoCategoria)
 
     })
+
+
+    // filtro por vtuber
+
+    vtubers.forEach( vtuber => {
+
+        // creacion de icon/button
+        let vtuberX = document.createElement("div")
+        vtuberX.classList.add("col-md-4","col-lg-3")
+     
+        vtuberX.innerHTML= 
+        
+            `   
+                <input type="checkbox" class="btn-check buttonVtuber" id="vtuber${vtuber.id}" autocomplete="off" onClick="filtrar()">
+                <label class="btn btn-outline-primary" for="vtuber${vtuber.id}">
+                    <img class="w-25 d-block mx-auto"src="${vtuber.img}" alt="${vtuber.nombre}">
+                    ${vtuber.nombre}
+                </label>
+            `
+        ;
+        
+        containerVtuber.appendChild(vtuberX)
+    
+    })
+
 }
 
-//-------------------------------- PROCEDIMIENTO COMPRA  (FUNCIONA)-----------------------------------------
+function vaciarCarrito(){
 
-
-function compraConfirmada(){
-
-    let total    =  arrayCarrito.reduce((t,producto) => t+ producto.precioPlusIVA(),0)
-
-    alert(">>>>>>Su compra ha sido exitosa<<<<<<\nTotal: $"+total)
-
-    // cleans del carrito
     arrayCarrito.splice(0,arrayCarrito.length)
-
-
-    menuConectadoTrue()
+    localStorage.setItem("productos-en-carrito", JSON.stringify(arrayCarrito))
+    generarProductoEnCarrito()
 }
 
-
-
-//-------------------------------- CREAR USUARIO (FUNCIONA)-----------------------------------------
-
-function crearCuenta(){
-
-    let usuario = prompt("Ingrese su usuario")
-    
-    let usuarioEncontrado = usuariosRegistrado.some( usuarioFiltrado =>  usuarioFiltrado.nombreUsuario === usuario)
-    
-    while( usuarioEncontrado !== false){
-    
-        alert("El nombre de usuario ya se encuentra registado")
-    
-        usuario = prompt("Ingrese su usuario")
-    
-        usuarioEncontrado = usuariosRegistrado.some( usuarioFiltrado =>  usuarioFiltrado.nombreUsuario === usuario)
-    }
-
-    let pass = prompt("Ingrese su contraseña")
-
-    let id   = usuariosRegistrado.length - 1
-    
-    usuariosRegistrado.push(new Usuario(id,usuario,pass))
-
-    alert("Su cuenta se ha registrado correctamente")
-}
-
-//-------------------------------- CHECK ESTADO CARRITO , para saber si tiene productos o no(FUNCIONA)----------------------------------------
-
-
-function obtenerEstadoCarrito2(){
-
-    // check false = carrito vacio
-    // check true  = carrito con productos
-
-    let check = false
-
-    if(arrayCarrito.length >= 0){
-        check = true
-    }
-
-    return check
-}
 
