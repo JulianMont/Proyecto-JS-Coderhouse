@@ -40,17 +40,20 @@ function filtrar(){
     buttonsFiltro.forEach( filtro =>{
 
 
-        arrayFiltrado = arrayProductosTienda.filter(producto => ((`vtuber${producto.idVtuber}`) === filtro.id) || ((`categoria${producto.idCategoria}`) === filtro.id))
+        arrayFiltrado = arrayProductosTienda.filter(producto => 
+            ((`vtuber${producto.idVtuber}`) === filtro.id) || 
+            ((`categoria${producto.idCategoria}`) === filtro.id)  || 
+            (((`vtuber${producto.idVtuber}`) === filtro.id) && ((`categoria${producto.idCategoria}`) === filtro.id)))
 
+        console.log(arrayFiltrado)
         // guardo el dato del filtro X 
 
-        arrayFiltradoTotal = arrayFiltrado.concat(arrayFiltrado)
+        arrayFiltradoTotal = arrayFiltradoTotal.concat(arrayFiltrado)
+
+        arrayFiltradoTotal = [...new Set(arrayFiltradoTotal)]
         
-
-
     })
 
-    console.log(arrayFiltrado)
     console.log(arrayFiltradoTotal)
 
     // si no hay nada en el filtratoTotal carga la array con todos los productos 
