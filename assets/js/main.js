@@ -33,28 +33,55 @@ function filtrar(){
     buttonsVtuber    = document.querySelectorAll(".buttonVtuber:checked")
     buttonsCategoria = document.querySelectorAll(".buttonCategoria:checked")
 
+
     // uno los botones en un array
 
-    let buttonsFiltro = [...buttonsVtuber, ...buttonsCategoria]
-
-    buttonsFiltro.forEach( filtro =>{
+    // let buttonsFiltro = [...buttonsVtuber, ...buttonsCategoria]
 
 
-        arrayFiltrado = arrayProductosTienda.filter(producto => 
-            ((`vtuber${producto.idVtuber}`) === filtro.id) || 
-            ((`categoria${producto.idCategoria}`) === filtro.id)  || 
-            (((`vtuber${producto.idVtuber}`) === filtro.id) && ((`categoria${producto.idCategoria}`) === filtro.id)))
+    buttonsVtuber.forEach( filtro =>{
 
-        console.log(arrayFiltrado)
-        // guardo el dato del filtro X 
+
+        arrayFiltrado = arrayProductosTienda.filter(producto => ((`vtuber${producto.idVtuber}`) === filtro.id))
+
+
+        if(buttonsCategoria.lenght != 0){
+
+            buttonsCategoria.forEach(filtro =>{
+
+                arrayFiltrado = arrayFiltrado.filter(producto => ((`categoria${producto.idCategoria}`) === filtro.id))
+
+            })
+
+        }
+
 
         arrayFiltradoTotal = arrayFiltradoTotal.concat(arrayFiltrado)
-
-        arrayFiltradoTotal = [...new Set(arrayFiltradoTotal)]
-        
+   
     })
 
-    console.log(arrayFiltradoTotal)
+    buttonsCategoria.forEach( filtro =>{
+
+
+        arrayFiltrado = arrayProductosTienda.filter(producto => ((`categoria${producto.idCategoria}`) === filtro.id))
+
+
+        if(buttonsVtuber.lenght != 0){
+
+            buttonsVtuber.forEach(filtro =>{
+
+                arrayFiltrado = arrayFiltrado.filter(producto => ((`vtuber${producto.idVtuber}`) === filtro.id))
+
+            })
+
+        }
+
+
+        arrayFiltradoTotal = arrayFiltradoTotal.concat(arrayFiltrado)
+   
+    })
+
+    arrayFiltradoTotal = [...new Set(arrayFiltradoTotal)]
 
     // si no hay nada en el filtratoTotal carga la array con todos los productos 
 
