@@ -16,18 +16,15 @@ let arrayCarritoLS    = JSON.parse(localStorage.getItem("productos-en-carrito"))
 
 let arrayCarrito = []
 let arrayProductosTienda = []
+let categoriaProducto = []
+let vtubers = []
 
 
 cargarProductosBD()
-
-console.log(arrayProductosTienda)
-// let categoriaProducto = cargarCategoriasBD()
-// let vtubers = cargarVtubersBD()
+cargarFiltrosBD()
 
 
-cargarProductoEnTienda(arrayProductosTienda)
 generarProductoEnCarrito()
-// cargarFiltrosEnTienda()
 
 btnVaciarCarrito.addEventListener("click",vaciarCarrito)
 

@@ -1,17 +1,52 @@
 
 function cargarProductosBD(){
 
-    const resp = await
-
     fetch("../../data-productos.json")
 
-    const data = resp.json()
+        .then( res => res.json())
+        .then( data => {
 
-    data.forEach(producto =>{
+            data.forEach(producto =>{
                 
-        arrayProductosTienda.push(new Producto(producto.idProducto,producto.idCategoria,producto.nombre,producto.precio,producto.idVtuber,producto.img))
-    })
+                arrayProductosTienda.push(new Producto(producto.idProducto,producto.idCategoria,producto.nombre,producto.precio,producto.idVtuber,producto.img))
+            })
+        })
+        .then(()=>{
+            cargarProductoEnTienda(arrayProductosTienda)
+        })
 }
+
+function cargarFiltrosBD(){
+
+    fetch("../../data-categorias.json")
+
+        .then( res => res.json())
+        .then( data => {
+
+
+            data.forEach(categoria =>{
+                
+                categoriaProducto.push(categoria)
+            })
+        })
+
+    fetch("../../data-vtubers.json")
+        .then( res => res.json())
+        .then( data => {
+
+            data.forEach(vtuber =>{
+                
+                vtubers.push(vtuber)
+            })
+        })
+
+        .then(()=>{
+            cargarFiltrosEnTienda()
+        })
+
+}
+
+
 
 
 
@@ -20,32 +55,30 @@ function cargarProductosBD(){
 
 function cargarProductoEnTienda(productosFiltrados){
 
-    
+    console.log(productosFiltrados)
 
     containerCards.innerHTML = ""
+
 
     productosFiltrados.forEach( producto => {
 
 
         let card = document.createElement("div")
         card.classList.add("card","col-sm-6","col-md-4","col-lg-3")
-    
+        
         card.innerHTML= 
-        
-            `<img src="${producto.img}" class="card-img-top" alt="${producto.nombre}">
-            <div class="card-body">
-                <h5 class="card-title">${producto.nombre}</h5>
-                <p class="card-text">$${producto.precio} usd</p>
-                <button id="producto${producto.idProducto}" type="button" class="btn btn-primary buttonAgregar" onClick="agregarAlCarrito(${producto.idProducto})">Agregar al carrito</button>
-            </div>`
-        ;
-        
+            
+                `<img src="${producto.img}" class="card-img-top" alt="${producto.nombre}">
+                <div class="card-body">
+                    <h5 class="card-title">${producto.nombre}</h5>
+                    <p class="card-text">$${producto.precio} usd</p>
+                    <button id="producto${producto.idProducto}" type="button" class="btn btn-primary buttonAgregar" onClick="agregarAlCarrito(${producto.idProducto})">Agregar al carrito</button>
+                </div>`
+            ;
+            
         containerCards.appendChild(card)
 
     })
-
-
-
 }
 
 function agregarAlCarrito(idProducto){
