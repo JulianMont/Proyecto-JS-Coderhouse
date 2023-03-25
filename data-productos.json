@@ -1,0 +1,239 @@
+
+[
+
+    {
+        "idProducto":1,
+        "idCategoria":1,
+        "nombre":"Shylily Sunset T-Shirt",
+        "precio":32,
+        "idVtuber":1,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/BlackT-ShirtMock-2022-10-15T184220.877.jpg?v=1665880554"
+    },
+
+    {
+        "idProducto":2,
+        "idCategoria":1,
+        "nombre":"Shylily Yandere T-Shirt",
+        "precio":32,
+        "idVtuber":1,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/BlackT-ShirtMock-2022-10-15T184338.825_750x.jpg?v=1665881058"
+    },
+
+    {
+        "idProducto":3,
+        "idCategoria":2,
+        "nombre":"Shylily Streetwear Hoodie",
+        "precio":99,
+        "idVtuber":1,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/HoodieMockback_96_1100x.jpg?v=1665880008"
+    },
+
+    {
+        "idProducto":4,
+        "idCategoria":2,
+        "nombre":"Shylily Hearts Hoodie",
+        "precio":99,
+        "idVtuber":1,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/HoodieMockback_97_1100x.jpg?v=1665878892"
+    },
+
+    {
+        "idProducto":5,
+        "idCategoria":4,
+        "nombre":"Shylily Monochrome Sweatpants",
+        "precio":79,
+        "idVtuber":1,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/BlackSweatpantsMock_17_32223272-ab1d-4a3e-8406-26a0d317bc8b.jpg?v=1665878363"
+    },
+
+    {
+        "idProducto":6,
+        "idCategoria":4,
+        "nombre":"Shylily Hearts Sweatpants",
+        "precio":79,
+        "idVtuber":1,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/BlackSweatpantsMock_18_2da4a4ca-9854-4922-a95d-4d8e5c250999.jpg?v=1665879353"
+    },
+
+    {
+        "idProducto":7,
+        "idCategoria":3,
+        "nombre":"Shylily Monochrome Hat",
+        "precio":39,
+        "idVtuber":1,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/Shylily-markings-hat1.1.jpg?v=1665881578"
+    },
+
+    {
+        "idProducto":8,
+        "idCategoria":1,
+        "nombre":"Shylily Monochrome T-Shirt",
+        "precio":32,
+        "idVtuber":1,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/BlackT-ShirtMock-2022-10-15T184247.158_750x.jpg?v=1665877807"
+    },
+
+    {
+        "idProducto":9,
+        "idCategoria":1,
+        "nombre":"OniGiri Streetwear T-Shirt",
+        "precio":32,
+        "idVtuber":2,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/BlackT-ShirtMock-2022-11-16T011607.069_750x.jpg?v=1668584543"
+    },
+
+    {
+        "idProducto":10,
+        "idCategoria":1,
+        "nombre":"OniGiri Icon T-Shirt",
+        "precio":35,
+        "idVtuber":2,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/White-T-Shirt-Mock1.0.png?v=1668593307"
+    },
+
+    {
+        "idProducto":11,
+        "idCategoria":2,
+        "nombre":"OniGiri Streetwear Hoodie",
+        "precio":89,
+        "idVtuber":2,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/HoodieMockback-2022-11-16T011611.253_1100x.jpg?v=1668584967"
+    },
+
+    {
+        "idProducto":12,
+        "idCategoria":1,
+        "nombre":"OniGiri Anime T-Shirt",
+        "precio":32,
+        "idVtuber":2,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/BlackT-ShirtMock-2022-11-16T011545.157.jpg?v=1668583365"
+    },
+
+    {
+        "idProducto":13,
+        "idCategoria":4,
+        "nombre":"OniGiri Streetwear Tie-Dye Sweatpants",
+        "precio":85,
+        "idVtuber":2,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/Tie-DyeSweatpantsMock_24_6f93878b-e13d-4d31-9d47-55b04a91cdee.jpg?v=1668583827"
+    },
+
+    {
+        "idProducto":14,
+        "idCategoria":3,
+        "nombre":"OniGiri Streetwear Hat",
+        "precio":32,
+        "idVtuber":2,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/HatMock_75.jpg?v=1668584705"
+    },
+
+    {
+        "idProducto":15,
+        "idCategoria":2,
+        "nombre":"OniGiri Anime Hoodie",
+        "precio":89,
+        "idVtuber":2,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/HoodieMockback-2022-11-16T011547.184_1100x.jpg?v=1668583534"
+    },
+
+    {
+        "idProducto":16,
+        "idCategoria":4,
+        "nombre":"OniGiri Anime Sweatpants",
+        "precio":79,
+        "idVtuber":2,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/BlackSweatpantsMock_23.jpg?v=1668583234"
+    },
+
+    {
+        "idProducto":17,
+        "idCategoria":4,
+        "nombre":"Numi Noomba Sweatpants",
+        "precio":69,
+        "idVtuber":3,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/NUMI-SWEAT-PANTS-RED-HORNS.png?v=1676658023"
+    },
+
+    {
+        "idProducto":18,
+        "idCategoria":2,
+        "nombre":"Numi Black Embroidered Hoodie",
+        "precio":89,
+        "idVtuber":3,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/NUMI-EMBROIDERED-HOODIE-MOCK.png?v=1676658374"
+    },
+    
+    {
+        "idProducto":19,
+        "idCategoria":2,
+        "nombre":"Numi White Embroidered Hoodie",
+        "precio":89,
+        "idVtuber":3,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/NUMI-EMBROIDERED-HOODIE-MOCK-WHITE.png?v=1676658270"
+    },
+
+    {
+        "idProducto":20,
+        "idCategoria":2,
+        "nombre":"Numi Embarrassed Anime Streetwear Hoodie",
+        "precio":99,
+        "idVtuber":3,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/HoodieMockback_59_1100x.jpg?v=1652989103"
+    },
+
+    
+    {
+        "idProducto":21,
+        "idCategoria":3,
+        "nombre":"Numi Embarrassed Anime Streetwear Hat",
+        "precio":30,
+        "idVtuber":3,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/HatMock_39.jpg?v=1652989450"
+    },
+    
+    {
+        "idProducto":22,
+        "idCategoria":1,
+        "nombre":"Numi Embarrassed Anime Streetwear T-Shirt",
+        "precio":35,
+        "idVtuber":3,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/BlackT-ShirtMock_68.jpg?v=1652989296"
+    },
+    
+    {
+        "idProducto":23,
+        "idCategoria":2,
+        "nombre":"Numi Anime Streetwear Hoodie",
+        "precio":99,
+        "idVtuber":3,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/HoodieMockback_60_1100x.jpg?v=1652990306"
+    },
+    
+    {
+        "idProducto":24,
+        "idCategoria":2,
+        "nombre":"Numi Kickin' It Anime Streetwear Hoodie",
+        "precio":79,
+        "idVtuber":3,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/3.3_1_1100x.jpg?v=1652989850"
+    },
+    
+    {
+        "idProducto":25,
+        "idCategoria":4,
+        "nombre":"Numi Anime Streetwear Tie-Dye Sweatpants",
+        "precio":109,
+        "idVtuber":3,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/Tie-DyeSweatpantsMock_11.jpg?v=1652990635"
+    },
+    
+    {
+        "idProducto":26,
+        "idCategoria":4,
+        "nombre":"Numi Embarrassed Anime Tie-Dye Sweatpants",
+        "precio":109,
+        "idVtuber":3,
+        "img":"https://cdn.shopify.com/s/files/1/0482/8463/1205/products/Tie-DyeSweatpantsMock_10.jpg?v=1652989560"
+    }
+
+]    

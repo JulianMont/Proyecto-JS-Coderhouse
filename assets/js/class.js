@@ -1,7 +1,4 @@
 
-
-
-
 class Producto{
 
     constructor(idProducto,idCategoria,nombre,precio,idVtuber,img){
